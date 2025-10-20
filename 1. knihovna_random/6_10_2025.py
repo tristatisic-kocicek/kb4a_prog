@@ -10,23 +10,25 @@ def random_vysledek():
             return("panna")
         
 suma = 100  
+kolo = True
 
-print ("Máš", suma, "Kč")
-sazka = int(input("Kolik chces vsadit?: "))
-tip_uzivatele = input("Zadej orel nebo panna: ")
-print (random_vysledek())
-
-if tip_uzivatele == random_vysledek():
-    print ("Vyhrál jsi")
-    suma = suma + (2*sazka)
+while kolo and suma > 0:
     print ("Máš", suma, "Kč")
     sazka = int(input("Kolik chces vsadit?: "))
     tip_uzivatele = input("Zadej orel nebo panna: ")
-else:
-    print ("Prohrál jsi")
-    suma -= sazka
-    print ("Máš", suma, "Kč")
-    sazka = int(input("Kolik chces vsadit?: "))
-    tip_uzivatele = input("Zadej orel nebo panna: ")
-    
+    print (random_vysledek())
 
+    if tip_uzivatele == random_vysledek():
+        print ("Vyhrál jsi")
+        suma = suma + (2*sazka)
+        print ("Máš", suma, "Kč")
+        sazka = int(input("Kolik chces vsadit?: "))
+        tip_uzivatele = input("Zadej orel nebo panna: ")
+    else:
+        print ("Prohrál jsi")
+        suma -= sazka
+        print ("Máš", suma, "Kč")
+        sazka = int(input("Kolik chces vsadit?: "))
+        tip_uzivatele = input("Zadej orel nebo panna: ")
+
+    kolo = input("Chces pokracovat? (ano/ne): ") == "ano"
