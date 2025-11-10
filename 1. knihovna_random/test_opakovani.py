@@ -8,7 +8,7 @@ for i in range(10):
 
 a = max(znamky)
 b = min(znamky)
-
+ 
 print ((sum(znamky)/10))
 print (a, ",", b )
 
