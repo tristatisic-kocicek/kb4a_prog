@@ -1,6 +1,6 @@
 import random
 import csv
-import matplotlib.pyplot as plt
+import  e as plt
 
 
 cesta = r"C:\Users\nejme\kb4a_prog\2. prace_se_soubory\data\studenti.txt"
@@ -21,40 +21,53 @@ vybrani_studenti.sort()
 print (vybrani_studenti)
 
 with open("zkouseni_studenti.txt", "w", encoding="utf-8") as file:
-    file.write("nigga what")
+    file.write("Selected students:\n")
     for s in vybrani_studenti:
         file.write(s)
 
 
-
-
-uzivatel = input("nigga what")
+uzivatel = input("Enter some text: ")
     
-with open("aaaaaaaaaaaAAAAAA.txt", "w", encoding="utf-8"):
+with open("aaaaaaaaaaaAAAAAA.txt", "w", encoding="utf-8") as file:
     file.write(uzivatel)
     
-with open (cesta_teplota, "r", encoding="utf-8") as file:
-    reader = csv.DictReader(file)
+if cesta_teplota:
+    try:
+        with open(cesta_teplota, "r", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
     
-    roky = [] 
-    teploty_rano = []
+            roky = [] 
+            teploty_rano = []
     
-    for radek in reader:
-        if radek["TIME"] == "07:00":
-            print(radek["YEAR"], radek["TEMPERATURE"])
-            teplota = float(radek["TEMPERATURE"])
-            teploty_rano.append(teplota)
-            rok = int(radek["YEAR"])
-            roky.append(rok)
+            for radek in reader:
+                if radek.get("TIME") == "07:00":
+                    year = radek.get("YEAR")
+                    temp = radek.get("TEMPERATURE")
+                    if year and temp:
+                        try:
+                            teplota = float(temp)
+                            teploty_rano.append(teplota)
+                            rok = int(year)
+                            roky.append(rok)
+                        except ValueError:
+                            # skip rows with invalid numeric data
+                            continue
             
-    prumer = sum(teploty_rano)  / len(teploty_rano)
-    print(f"Prumer je {round(prumer, 2)}stupnu celsia")
+            if teploty_rano:
+                prumer = sum(teploty_rano) / len(teploty_rano)
+                print(f"Prumer je {round(prumer, 2)} stupnu celsia")
     
-    plt.bar(roky, teploty_rano)
-    plt.title ("Prumer teploty v CR")
-    plt.xlabel("Rok")
-    plt.ylabel("Teploty ve stupnu celsia")
-    plt.show()
+                plt.bar(roky, teploty_rano)
+                plt.title("Prumer teploty v CR")
+                plt.xlabel("Rok")
+                plt.ylabel("Teploty ve stupnu celsia")
+                plt.show()
+            else:
+                print("Nebyly nalezeny zadne teploty v 07:00.")
+    except FileNotFoundError:
+        print(f"Soubor {cesta_teplota!r} nebyl nalezen.")
+else:
+    print("cesta_teplota neni nastavena; preskakuji zpracovani teplot.")
                
     
 
