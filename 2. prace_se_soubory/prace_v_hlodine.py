@@ -11,4 +11,4 @@ with open(cesta_k_citatum, "r", encoding="utf-8") as file:
         
 print("-----")
 
-emoji_1.
+emoji_1
