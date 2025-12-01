@@ -1,6 +1,6 @@
 import random
 import csv
-import  e as plt
+import matplotlib.pyplot as plt
 
 
 cesta = r"C:\Users\nejme\kb4a_prog\2. prace_se_soubory\data\studenti.txt"
