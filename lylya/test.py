@@ -22,7 +22,9 @@ for i in range (3):
             
     elif znak == "+": 
         if odpoved == (a + b):
-            spravna_odpoved += 1
+            spravna_odpoved += 10
+        
             
 print ("spravne: ", spravna_odpoved, "/ 0")
+
             
