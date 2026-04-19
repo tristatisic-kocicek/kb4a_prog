@@ -1,0 +1,6 @@
+Textový popis houbiček: 
+1. Využití dataset "mushroom-classification" z UCI ML repository. Dataset má 7 numerických příznaků: `cap-color`, `cap-surface`, `gill-color`, `gill-size`, `stalk-color`, `veil-type`, `odor` (převedeny na float) a cílovou proměnnou `cap-shape` (int, 0-5 tvarů čepice).
+2. Odhadnout tvar čepice houby (`cap-shape`) na základě morfologických a barevných příznaků.
+3. Data byly rozdělené na 80/20 (train/test a `random_state=42`). Trénovaným je MLPClassifier.
+4. Model dosáhl přesnosti ~95-98% (vypočteno na testovací sadě, viz výpis a confusion matrix). Vysoká úspěšnost díky dobře separovatelným příznakům.
+4.1. Využití k mykologické identifikaci hub, mobilní aplikaci pro zájemce hub, předběžná toxicita screening (expanze na edible/poisonous). 
